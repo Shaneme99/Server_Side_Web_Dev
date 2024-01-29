@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Styling Demo</title>
+  <style>
+    body {
+      text-align: center;
+      margin: 50px;
+      transition: all 0.5s ease;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .red-text {
+      color: red;
+    }
+
+    .green-background {
+      background-color: green;
+    }
+
+    .black-text-white-background {
+      color: black;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Choose an Option</h1>
+
+  <div class="button-container">
+    <button class="button" onclick="changeTextRed()">Change Text to Red</button>
+    <button class="button" onclick="turnBackgroundGreen()">Turn Background Green</button>
+    <button class="button" onclick="blackTextWhiteBackground()">Black Text, White Background</button>
+  </div>
+
+  <script>
+    function changeTextRed() {
+      document.body.classList.remove("green-background", "black-text-white-background");
+      document.body.classList.add("red-text");
+    }
+
+    function turnBackgroundGreen() {
+      document.body.classList.remove("red-text", "black-text-white-background");
+      document.body.classList.add("green-background");
+    }
+
+    function blackTextWhiteBackground() {
+      document.body.classList.remove("red-text", "green-background");
+      document.body.classList.add("black-text-white-background");
+    }
+  </script>
+
+</body>
+</html>

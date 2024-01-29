@@ -7,9 +7,9 @@
 	<meta charset="utf-8">
     <title>Site Registration Form</title>   
 </head>
-
 <body>
-	<form action="reg_conf.htm" method="get">
+	<fieldset>
+	<form action="reg_conf.php" method="get">
 
 	<label for="First_Name"> First Name:<br></label>
 	<input type="text" name="f_name" id="First_Name"><br>
@@ -18,7 +18,7 @@
 	<input type="text" name="l_name" id="Last_Name"><br>
 
 	Mailing Address:<br>
-	<fieldset>
+	
 	<label for="Street"> Street:</label>
 	<input type="text" name="street" id="Street"><br>
 
@@ -80,7 +80,7 @@
 		</select><br>
 	<label for="Zip_Code"> Zip Code:</label>
 	<input type="text" name="zip_code" id="Zip_Code"><br>
-	</fieldset>
+	
 	<label for="Email"> Email Address:</label>
 	<input type="text" name="email" id="Email"><br>
 
@@ -91,17 +91,18 @@
 	Mobile Phone: <input type="radio" name="Type" value="Mobile"><br>
 	Office Phone: <input type="radio" name="Type" value="Office"><br>
 
-	Preferred Method of Contact:
-	<fieldset>
+	Preferred Method of Contact:<br>
+	
 	Text: <input type="radio" name="contact" value="Text"><br>
 	Email: <input type="radio" name="contact" value="Email"><br>
 	Physical Mail: <input type="radio" name="contact" value="Mail"><br>
-	</fieldset>
+	
 
 	Password: <input type="password" name="pwd"><br>
 	Confirm Password:<input type="password" name="pwd2"><br>
 	I agree that all this information is correct: <input type="checkbox" name="confirm"><br>
-	<input type="submit">
+	<input type="submit" name="submit" value="submit">
+	</fieldset>
 </form>
 </body>
 </html>
