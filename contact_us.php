@@ -1,6 +1,7 @@
 <?php
 //This page checks for required content, errors, and provides sticky output
 //Upon successful submission, data is sent to the database
+//Auhtor: Shane Menzigian
 require 'includes/header.php';
 if (isset($_GET['send']) && $_GET['send'] =="Send message") {
 	$errors = array();
@@ -79,19 +80,43 @@ if (isset($_GET['send']) && $_GET['send'] =="Send message") {
 			if($box=='sci')
 				$sci=1;
 			if($box=='travel')
-				$travel=1;
+				$travel=1;	
 		}
 		//Connect to the database and insert the data
-		include "pdo_connect.php";
-		$sql = "INSERT INTO JJ_contacts (firstName, lastName, emailAddr, comments, newsletter, howHear, anime, arts, judo, lang, sci, travel) VALUES ('$firstName','$lastName', '$email', '$comments', $newsletter, '$howhear', $anime, $arts, $judo, $lang,$sci,$travel)";
-		$result = $dbc -> exec($sql);
-		
-		if($result)
-			echo "<main><h2>Thank you $firstName $lastName for contacting us</h2><h3>We have saved your information</h3></main>";
-		else {
+		require_once "pdo_connect.php";
+		$to_check = "SELECT * FROM JJ_contacts WHERE emailAddr = ?";
+		$stmt->prepare($to_check);
+		$stmt->bindParam(1,$email);
+		$stmt->exec();
+		$numRows = $stmt->rowCount();
+
+		if($emails->rowCount() >=1){
+			echo 'Email already exists! Please login or create a new account.';
+		}
+
+		$sql = "INSERT INTO JJ_contacts (firstName, lastName, emailAddr, comments, newsletter, howHear, anime, arts, judo, lang, sci, travel) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		$stmt->prepare($sql);
+		$stmt->bindParam(1,$firstName);
+		$stmt->bindParam(2,$lastName);
+		$stmt->bindParam(3,$email);
+		$stmt->bindParam(4,$comments);
+		$stmt->bindParam(5,$newsletter);
+		$stmt->bindParam(6,$howhear);
+		$stmt->bindParam(7,$anime);
+		$stmt->bindParam(8,$arts);
+		$stmt->bindParam(9,$judo);
+		$stmt->bindParam(10,$lang);
+		$stmt->bindParam(11,$sci);
+		$stmt->bindParam(12,$travel);
+		$result = $stmt->exec();
+
+		if($result){
+
+		echo "<main><h2>Thank you $firstName $lastName for contacting us</h2><h3>We have saved your information</h3></main>";
+		}else{
 			echo '<main><h2>We\'re sorry, we are unable to process your request at this time.</h2><h2>Please try again later</h2></main>';
 		}
-		include 'includes/footer.php'; 
+		include '/includes/footer.php'; 
 		exit;
 	} # end no errors
 } #end isset($_GET['send'])
