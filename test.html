@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Move the Square</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  #container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #square {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transition: left 2s ease;
+  }
+  #moveButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div id="square"></div>
+</div>
+
+<button id="moveButton">Move Square</button>
+
+<script>
+  const square = document.getElementById('square');
+  const moveButton = document.getElementById('moveButton');
+  let movingRight = true;
+
+  moveButton.addEventListener('click', function() {
+    const screenWidth = window.innerWidth;
+    const squareWidth = square.offsetWidth;
+
+    if (movingRight) {
+      square.style.left = screenWidth - squareWidth + 'px';
+    } else {
+      square.style.left = '0';
+    }
+
+    movingRight = !movingRight;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Guest List</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Hotel Guest List</h1>
+    <label class="switch">
+      <input id="darkModeToggle" type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div>
+</header>
+
+<div class="container">
+  <input type="text" id="searchInput" placeholder="Search...">
+  <table id="guestTable">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Room Number</th>
+        <th>ID Number</th>
+        <th>Check-in Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Guest data will be inserted here dynamically -->
+    </tbody>
+  </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
